@@ -42,6 +42,7 @@ function orderAlphabetically(array) {
   let arrayMoviesSorted = arrayMovieTitles.sort((a, b) =>
     a.localeCompare(b, undefined, { sensitivity: 'base' })
   );
+  
   let result = arrayMoviesSorted.slice(0, 20);
   console.log('EXERCICE 4 ->', result);
   return result;
@@ -123,7 +124,19 @@ function hoursToMinutes(array) {
 }
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {}
+function bestFilmOfYear(array, year) {
+
+  let arrayMoviesByYear = array.filter(function (movie) {
+    return movie.year === year;
+  });
+
+  let arraySortedBestScores = arrayMoviesByYear.sort((a, b) => b.score - a.score); //Descending order
+
+  let result = [arraySortedBestScores[0]];
+
+  console.log('EXERCICE 8 ->', result);
+  return result;
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
