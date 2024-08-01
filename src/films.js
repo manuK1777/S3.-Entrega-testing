@@ -21,7 +21,6 @@ function getMoviesFromDirector(array, director) {
 
 // Exercise 3: Calculate the average of the films of a given director.
 function moviesAverageOfDirector(array, director) {
-  
   //Get the films of a certain director
   const arrayMoviesFromDir = getMoviesFromDirector(array, director);
   //Get scores of his movies
@@ -39,24 +38,52 @@ function moviesAverageOfDirector(array, director) {
 
 // Exercise 4:  Alphabetic order by title
 function orderAlphabetically(array) {
-
-  const arrayMovieTitles = array.map(movie => movie.title);
-  let arrayMoviesSorted = arrayMovieTitles.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
-  let result = arrayMoviesSorted.slice(0, 20) 
+  const arrayMovieTitles = array.map((movie) => movie.title);
+  let arrayMoviesSorted = arrayMovieTitles.sort((a, b) =>
+    a.localeCompare(b, undefined, { sensitivity: 'base' })
+  );
+  let result = arrayMoviesSorted.slice(0, 20);
   console.log('EXERCICE 4 ->', result);
   return result;
 }
 
 // Exercise 5: Order by year, ascending
-function orderByYear() {
-  const arrayMovieYears = array.map(movie => movie.year);
-  let arrayMoviesSorted = arrayMovieYears.sort((a, b) => a - b);
+function orderByYear(array) {
+ 
+ // Sort the array by year and then by title if the years are the same
+  array.sort((a, b) => {
+    if (a.year === b.year) {
+      return a.title.localeCompare(b.title);
+    }
+    return a.year - b.year;
+  });
+
+  //Map to new array
+  let result = array.map((movie) => {
+    return { title: movie.title, year: movie.year };
+  });
+
   console.log('EXERCICE 5 ->', result);
   return result;
 }
 
+
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {}
+function moviesAverageByCategory(array, genre) {
+
+  let moviesByGenre = array.filter((movie) => movie.genre.some(g => genre.includes(genre)));
+
+  let totalScore = moviesByGenre.reduce((accumulator, movie) => {
+    return accumulator + movie.score;
+  }, 0);
+
+  let averageScoreByGenre = totalScore / moviesByGenre.length;
+
+  let result = parseFloat(averageScoreByGenre.toFixed(2));
+
+  console.log('EXERCICE 6 ->', result);
+  return result
+}
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes() {}
