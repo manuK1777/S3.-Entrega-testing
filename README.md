@@ -13,9 +13,14 @@ You will be in charge of setting up the core of the application: all the logic o
 
  - Clone this repo
 ```bash
-$ git clone https://github.com/IT-Academy-BCN/starter-code-frontend-sprint-3-movies
+$ git clone https://github.com/manuK1777/S3.-Entrega-testing.git
 ```
+or
 
+```bash
+$ git clone git@github.com:manuK1777/S3.-Entrega-testing.git
+```
+<br>
 
 ## Tests!
 
